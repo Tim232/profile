@@ -1,0 +1,42 @@
+@font-face {
+    font-family: 'CookieRun Black';
+    src: url(../fonts/CookieRunFont_OTF/CookieRun\ Black.otf);
+}
+
+@import "reset.css";
+
+body {
+    font-family: 'CookieRun Black';
+    margin: 0;
+    padding: 50px 0px;
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#canvas {
+    width: 500px;
+    height: 500px;
+    background-color: white;
+}
+
+button {
+    border: 1px solid black;
+    margin-top: 2vh;
+    background-color: white;
+    border-radius: 2vh;
+    padding: 1vh;
+    font-size: 2.5vh;
+    outline: none;
+    color: black;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: black;
+    color: white;
+}
