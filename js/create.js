@@ -1,7 +1,7 @@
 var canvas = document.getElementById('canvas')
 var ctx = canvas.getContext('2d')
 var rangeSize = document.getElementById('range-size')
-var isIE = false || !!document.documentMOde
+var isIE = false || !!document.documentMode
 
 rangeSize.innerText = document.getElementById('range').value + 'px'
 
@@ -22,10 +22,12 @@ document.getElementById('save').addEventListener('click', function() {
 })
 
 if (isIE) {
+    document.getElementById('ie').innerText = '이 브라우저는 곧 지원이 중단됩니다.'
+
     document.getElementById('range').addEventListener('change', function(event) {
         var size = event.target.value
         ctx.font = size + 'px CookieRun Black'
-        rangeSize.textContent = size + 'px'
+        rangeSize.innerText = size + 'px'
     })
 } else {
     document.getElementById('range').addEventListener('input', function(event) {

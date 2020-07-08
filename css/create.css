@@ -3,12 +3,13 @@
     src: url(../fonts/CookieRunFont_OTF/CookieRun\ Black.otf);
 }
 
+@import url(//fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap);
 @import "reset.css";
 
 body {
-    font-family: 'CookieRun Black';
+    font-family: 'Noto Sans KR';
     margin: 0;
-    padding: 50px 0px;
+    padding: 40px 0;
 }
 
 #main {
@@ -19,6 +20,7 @@ body {
 }
 
 #canvas {
+    font-family: 'CookieRun Black';
     width: 500px;
     height: 500px;
     background-color: white;
@@ -55,4 +57,8 @@ button {
 
 #range {
     width: 40vh;
+}
+
+#ie {
+    margin-bottom: 3vh;
 }
