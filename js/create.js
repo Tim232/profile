@@ -29,9 +29,9 @@ document.getElementById('save').addEventListener('click', function() {
 
 document.getElementById('copy').addEventListener('click', function() {
     canvas.toBlob(function(blob) {
-        clipboard.write([ new clipboard.ClipboardItem({ 'image/png': blob }) ])
+        //clipboard.write([ new clipboard.ClipboardItem({ 'image/png': blob }) ])
 
-        //window.navigator.clipboard.write([ new ClipboardItem({ 'image/png': blob }) ])
+        window.navigator.clipboard.write([ new ClipboardItem({ 'image/png': blob }) ])
     })
 })
 
