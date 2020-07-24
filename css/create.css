@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'CookieRun Black';
-    src: url(../fonts/CookieRunFont_OTF/CookieRun\ Black.otf);
+    src: url(../fonts/CookieRunFont_OTF/black.otf);
 }
 
 @import url(//fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap);
@@ -51,7 +51,7 @@ button {
     width: 35vh;
 }
 
-#range, #save {
+#range, #save, #range-size {
     margin-top: 3vh;
 }
 
@@ -59,6 +59,6 @@ button {
     width: 40vh;
 }
 
-#ie {
+#ie, #range-size {
     margin-bottom: 3vh;
 }

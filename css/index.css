@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'CookieRun Black';
-    src: url(../fonts/CookieRunFont_OTF/CookieRun\ Black.otf);
+    src: url(../fonts/CookieRunFont_OTF/black.otf);
 }
 
 @import "reset.css";
@@ -24,19 +24,21 @@ body {
     background-color: white;
 }
 
-button {
-    border: 1px solid black;
+#buttons, #font {
     margin-top: 2vh;
-    background-color: white;
+}
+
+button {
+    cursor: pointer;
+    border: 0;
+    background-color: blue;
+    color: white;
     border-radius: 2vh;
-    padding: 1vh;
+    padding: 1.5vh;
     font-size: 2.5vh;
     outline: none;
-    color: black;
-    cursor: pointer;
 }
 
 button:hover {
-    background-color: black;
-    color: white;
+    background-color: hsl(226, 100%, 58%);
 }

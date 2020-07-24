@@ -15,13 +15,34 @@ ctx.textBaseline = 'middle'
 ctx.textAlign = "center"
 
 document.getElementById('save').addEventListener('click', function() {
-    var link = document.createElement('a')
-    link.href = canvas.toDataURL()
-    link.download = "image"
-    link.click()
+    if (isIE) {
+        canvas.toBlob(function(blob) {
+            window.navigator.msSaveBlob(blob, 'image.png')
+        })
+    } else {
+        var link = document.createElement('a')
+        link.href = canvas.toDataURL()
+        link.download = "image"
+        link.click()
+    }
+})
+
+document.getElementById('copy').addEventListener('click', function() {
+    canvas.toBlob(function(blob) {
+        navigator.clipboard.write([ new ClipboardItem({ 'image/png': blob }) ])
+    })
 })
 
 if (isIE) {
+    if (!Element.prototype.remove) {
+        Element.prototype.remove = function() {
+            if (this.parentNode) {
+                this.parentNode.removeChild(this);
+            }
+        }
+    }
+    
+    document.getElementById('copy').remove()
     document.getElementById('ie').innerText = '이 브라우저는 곧 지원이 중단됩니다.'
 
     document.getElementById('range').addEventListener('change', function(event) {
