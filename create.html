@@ -10,11 +10,10 @@
 
 <body>
     <div id="main">
-        <h1 id="ie"></h1>
         <canvas id="canvas"></canvas>
         <div id="footer">
             <input type="range" id="range" min="5" max="512" value="256" step="1">
-            <p id="range-size" style="text-align: center;"></p>
+            <p id="range-size"></p>
         </div>
         <form id="form">
             <input type="text" id="name" autofocus spellcheck="false" autocomplete="off">
@@ -27,6 +26,8 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/gh/blueimp/JavaScript-Canvas-to-Blob/js/canvas-to-blob.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard-polyfill/3.0.0/main/clipboard-polyfill.min.js"></script>
     <script src="js/create.js"></script>
 </body>
 

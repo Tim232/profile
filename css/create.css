@@ -59,6 +59,10 @@ button {
     width: 40vh;
 }
 
-#ie, #range-size {
+#range-size {
     margin-bottom: 3vh;
+}
+
+#range-size {
+    text-align: center;
 }

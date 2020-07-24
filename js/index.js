@@ -1,6 +1,5 @@
 var canvas = document.getElementById('canvas')
 var ctx = canvas.getContext('2d')
-var isIE = false || !!document.documentMode
 
 canvas.width = 512
 canvas.height = 512
@@ -30,18 +29,8 @@ document.querySelector('#save').addEventListener('click', function() {
 
 document.querySelector('#copy').addEventListener('click', function() {
     canvas.toBlob(function(blob) {
-        navigator.clipboard.write([ new ClipboardItem({ 'image/png': blob }) ])
+        clipboard.write([ new clipboard.ClipboardItem({ 'image/png': blob }) ])
+        
+        //navigator.clipboard.write([ new ClipboardItem({ 'image/png': blob }) ])
     })
 })
-
-if (isIE) {
-    if (!Element.prototype.remove) {
-        Element.prototype.remove = function() {
-            if (this.parentNode) {
-                this.parentNode.removeChild(this);
-            }
-        }
-    }
-
-    document.getElementById('copy').remove()
-}
