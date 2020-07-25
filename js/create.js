@@ -3,6 +3,14 @@ var ctx = canvas.getContext('2d')
 var rangeSize = document.getElementById('range-size')
 var isIE = false || !!document.documentMode
 
+if (!Element.prototype.remove) {
+    Element.prototype.remove = function () {
+        if (this.parentNode) {
+            this.parentNode.removeChild(this)
+        }
+    }
+}
+
 rangeSize.innerText = document.getElementById('range').value + 'px'
 
 canvas.width = 512
@@ -29,8 +37,6 @@ document.getElementById('save').addEventListener('click', function() {
 
 document.getElementById('copy').addEventListener('click', function() {
     canvas.toBlob(function(blob) {
-        //clipboard.write([ new clipboard.ClipboardItem({ 'image/png': blob }) ])
-
         window.navigator.clipboard.write([ new ClipboardItem({ 'image/png': blob }) ])
     })
 })
@@ -68,16 +74,4 @@ document.getElementById('form').addEventListener('submit', function(event) {
     ctx.fillText(value, canvas.width / 2, canvas.height / 2)
 })
 
-function isChrome() {
-    for (var i = 0; i < navigator.plugins.length; i++)
-        if (navigator.plugins[i].name == 'Chrome PDF Viewer') return true;
-    return false;
-}
-
-if (!isChrome()) {
-    var notice = document.createElement('p')
-    notice.innerText = '현재 크로미움 브라우저 외에는 복사 기능이 지원되지 않습니다.'
-    notice.style.marginTop = '3vh'
-
-    document.querySelector('#main').appendChild(notice)
-}
+if (!window.navigator.clipboard || !window.navigator.clipboard.write) document.getElementById('copy').remove()

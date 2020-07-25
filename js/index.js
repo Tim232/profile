@@ -1,6 +1,14 @@
 var canvas = document.getElementById('canvas')
 var ctx = canvas.getContext('2d')
 
+if (!Element.prototype.remove) {
+    Element.prototype.remove = function () {
+        if (this.parentNode) {
+            this.parentNode.removeChild(this)
+        }
+    }
+}
+
 canvas.width = 512
 canvas.height = 512
 
@@ -14,7 +22,7 @@ ctx.textAlign = "center"
 ctx.strokeText('디토', canvas.width / 2, canvas.height / 2)
 ctx.fillText('디토', canvas.width / 2, canvas.height / 2)
 
-document.querySelector('#save').addEventListener('click', function() {
+document.getElementById('save').addEventListener('click', function() {
     if (isIE) {
         canvas.toBlob(function(blob) {
             window.navigator.msSaveBlob(blob, 'image.png')
@@ -27,10 +35,10 @@ document.querySelector('#save').addEventListener('click', function() {
     }
 })
 
-document.querySelector('#copy').addEventListener('click', function() {
+document.getElementById('copy').addEventListener('click', function() {
     canvas.toBlob(function(blob) {
-        clipboard.write([ new clipboard.ClipboardItem({ 'image/png': blob }) ])
-        
-        //navigator.clipboard.write([ new ClipboardItem({ 'image/png': blob }) ])
+        window.navigator.clipboard.write([ new ClipboardItem({ 'image/png': blob }) ])
     })
 })
+
+if (!window.navigator.clipboard || !window.navigator.clipboard.write) document.getElementById('copy').remove()
