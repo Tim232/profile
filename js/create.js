@@ -30,7 +30,7 @@ document.getElementById('save').addEventListener('click', function() {
     } else {
         var link = document.createElement('a')
         link.href = canvas.toDataURL()
-        link.download = "image"
+        link.download = "image.png"
         link.click()
     }
 })
