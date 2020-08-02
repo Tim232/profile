@@ -1,29 +1,94 @@
 var canvas = document.getElementById('canvas')
 var ctx = canvas.getContext('2d')
-var rangeSize = document.getElementById('range-size')
-var isIE = false || !!document.documentMode
-
-if (!Element.prototype.remove) {
-    Element.prototype.remove = function () {
-        if (this.parentNode) {
-            this.parentNode.removeChild(this)
-        }
-    }
-}
-
-rangeSize.innerText = document.getElementById('range').value + 'px'
+var range = document.getElementById('range')
+var rangeInput = document.getElementById('range-input')
+var rangeForm = document.getElementById('range-form')
 
 canvas.width = 512
 canvas.height = 512
 
-ctx.fillStyle = 'rgb(51, 51, 51)'
+if (window.innerWidth < 650 || window.innerHeight < 650) {
+    canvas.width = 256
+    canvas.height = 256
+
+    range.max = 256
+    range.value = 128
+}
+
+if (window.innerWidth < 400 || window.innerHeight < 400) {
+    canvas.width = 128
+    canvas.height = 128
+
+    range.max = 128
+    range.value = 64
+}
+
+if (window.innerWidth < 300 || window.innerHeight < 300) {
+    canvas.width = 64
+    canvas.height = 64
+
+    range.max = 64
+    range.value = 32
+}
+
+rangeInput.value = range.value
+
+ctx.fillStyle = '#333333'
 ctx.fillRect(0, 0, canvas.width, canvas.height)
-ctx.font = '256px CookieRun Black'
+ctx.font = canvas.height / 2 + 'px CookieRun Black'
 ctx.textBaseline = 'middle'
 ctx.textAlign = "center"
 
+window.addEventListener('resize', function (event) {
+    if (event.target.innerWidth < 650 || event.target.innerHeight < 650) {
+        canvas.width = 256
+        canvas.height = 256
+    
+        range.max = 256
+        range.value = 128
+    }
+
+    if (event.target.innerWidth < 400 || event.target.innerHeight < 400) {
+        canvas.width = 128
+        canvas.height = 128
+
+        range.max = 128
+        range.value = 64
+    }
+
+    if (event.target.innerWidth < 300 || event.target.innerHeight < 300) {
+        canvas.width = 64
+        canvas.height = 64
+
+        range.max = 64
+        range.value = 32
+    }
+
+    ctx.fillStyle = '#333333'
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
+    ctx.font = canvas.height / 2 + 'px CookieRun Black'
+    ctx.textBaseline = 'middle'
+    ctx.textAlign = "center"
+})
+
+range.addEventListener('change', function(event) {
+    var size = event.target.value
+
+    ctx.font = size + 'px CookieRun Black'
+    rangeInput.value = size
+})
+
+range.addEventListener('input', function(event) {
+    var size = event.target.value
+
+    ctx.font = size + 'px CookieRun Black'
+    rangeInput.value = size
+})
+
 document.getElementById('save').addEventListener('click', function() {
-    if (isIE) {
+    if (!confirm('저장하실 건가요?')) return
+
+    if (window.navigator.msSaveBlob) {
         canvas.toBlob(function(blob) {
             window.navigator.msSaveBlob(blob, 'image.png')
         })
@@ -41,20 +106,6 @@ document.getElementById('copy').addEventListener('click', function() {
     })
 })
 
-if (isIE) {
-    document.getElementById('range').addEventListener('change', function(event) {
-        var size = event.target.value
-        ctx.font = size + 'px CookieRun Black'
-        rangeSize.innerText = size + 'px'
-    })
-} else {
-    document.getElementById('range').addEventListener('input', function(event) {
-        var size = event.target.value
-        ctx.font = size + 'px CookieRun Black'
-        rangeSize.innerText = size + 'px'
-    })
-}
-
 document.getElementById('form').addEventListener('submit', function(event) {
     event.preventDefault()
 
@@ -62,9 +113,7 @@ document.getElementById('form').addEventListener('submit', function(event) {
 
     if (!value) return
 
-    document.getElementById('name').focus()
-
-    ctx.fillStyle = 'rgb(51, 51, 51)'
+    ctx.fillStyle = '#333333'
     ctx.fillRect(0, 0, canvas.width, canvas.height)
 
     ctx.fillStyle = "white"
@@ -73,5 +122,28 @@ document.getElementById('form').addEventListener('submit', function(event) {
     ctx.strokeText(value, canvas.width / 2, canvas.height / 2)
     ctx.fillText(value, canvas.width / 2, canvas.height / 2)
 })
+
+rangeForm.addEventListener('submit', function(event) {
+    event.preventDefault()
+
+    var size = rangeInput.value
+
+    if (isNaN(size) || size > canvas.width || size < 5) return rangeInput.value = range.value
+
+    ctx.font = size + 'px CookieRun Black'
+    range.value = size
+})
+
+rangeInput.addEventListener('keydown', function(event) {
+    if (!/^[0-9]+|Backspace|Enter|ArrowLeft|ArrowRight|ArrowUp|ArrowDown$/.test(event.key)) event.preventDefault()
+})
+
+if (!Element.prototype.remove) {
+    Element.prototype.remove = function () {
+        if (this.parentNode) {
+            this.parentNode.removeChild(this)
+        }
+    }
+}
 
 if (!window.navigator.clipboard || !window.navigator.clipboard.write) document.getElementById('copy').remove()
