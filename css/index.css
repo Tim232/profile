@@ -12,6 +12,9 @@ body {
     font-family: 'Spoqa Han Sans', sans-serif;
     margin: 0;
     padding: 50px 0;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
 }
 
 #main, #device {
