@@ -4,20 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ditto7890 프사</title>
+    <title>프사 만들기</title>
     <link rel="stylesheet" href="css/index.css">
-    <link rel="icon" href="img/ditto7890.png">
+    <link rel="icon" href="img/icon.png">
 </head>
 
-<body>
+<body ondragstart="return!1">
     <div id="main">
         <canvas id="canvas"></canvas>
+        <div id="footer">
+            <input type="range" id="range" min="5" max="512" value="256" step="1">
+            <form id="range-form">
+                <span>
+                    <input type="text" id="range-input" spellcheck="false" autocomplete="off">px
+                </span>
+            </form>
+        </div>
+        <form id="form">
+            <input type="text" id="name" spellcheck="false" autocomplete="off">
+            <button>적용</button>
+        </form>
         <div id="buttons">
             <button id="save">저장</button>
             <button id="copy">복사</button>
         </div>
-        <div id="font">폰트 로드가 안 될 경우 새로고침을 해주세요.</div>
-        <a href="/create.html">만들러 가기</a>
     </div>
 
     <script src="https://cdn.jsdelivr.net/gh/blueimp/JavaScript-Canvas-to-Blob/js/canvas-to-blob.min.js"></script>
