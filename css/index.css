@@ -1,31 +1,28 @@
 @font-face {
-    font-family: 'CookieRunOTF-Black';
+    font-family: 'CookieRun Black';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/CookieRunOTF-Black00.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
-@import "reset.css";
 
 body {
     font-family: 'Spoqa Han Sans', sans-serif;
     margin: 0;
-    padding: 50px 0;
+    padding: 0;
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
 }
 
-#main, #device {
+#main {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-
-#device {
-    display: none;
+    text-align: center;
+    padding: 50px 0;
 }
 
 #canvas {
@@ -33,33 +30,12 @@ body {
     background-color: white;
 }
 
-button, #name {
-    border-radius: 2vh;
-    padding: 1.5vh;
-    font-size: 2.5vh;
-    outline: none;
+#ranges {
+    margin: 10px 0;
 }
 
-button:hover {
-    background-color: hsl(226, 100%, 58%);
-}
-
-button {
-    cursor: pointer;
-    border: 0;
-    background-color: blue;
-    color: white;
-}
-
-#name {
-    border: 1px solid black;
-    background-color: white;
-    color: black;
-    width: 35vh;
-}
-
-#range, #save {
-    margin-top: 3vh;
+#buttons {
+    margin-top: 10px;
 }
 
 #range {
@@ -67,142 +43,6 @@ button {
     padding: 0;
 }
 
-#range-input {
-    border: 0;
-    outline: 0;
-    width: 8vh;
-    padding: 0.5vh;
-    background-color: white;
-    color: black;
-    font-size: 1.3rem;
-}
-
 #range-form {
-    text-align: center;
-    margin-bottom: 3vh;
     font-size: 1.3rem;
-}
-
-input[type=range] {
-    -webkit-appearance: none;
-    width: 100%;
-    margin-bottom: 3vh;
-}
-
-input[type=range]:focus {
-    outline: none;
-}
-
-input[type=range]::-webkit-slider-runnable-track {
-    width: 100%;
-    height: 7.5px;
-    cursor: pointer;
-    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-    background: #d5d4d3;
-    border-radius: 25px;
-    border: 0px solid #000101;
-}
-
-input[type=range]::-webkit-slider-thumb {
-    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-    border: 0px solid #000000;
-    height: 20px;
-    width: 20px;
-    border-radius: 25px;
-    background: blue;
-    cursor: pointer;
-    -webkit-appearance: none;
-    margin-top: -5px;
-}
-
-input[type=range]:focus::-webkit-slider-runnable-track {
-    background: #e5e4e3;
-}
-
-input[type=range]::-moz-range-track {
-    width: 100%;
-    height: 7.5px;
-    cursor: pointer;
-    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-    background: #d5d4d3;
-    border-radius: 25px;
-    border: 0px solid #000101;
-}
-
-input[type=range]::-moz-range-thumb {
-    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-    border: 0px solid #000000;
-    height: 20px;
-    width: 20px;
-    border-radius: 25px;
-    background: blue;
-    cursor: pointer;
-}
-
-input[type=range]::-ms-track {
-    width: 100%;
-    height: 7.5px;
-    cursor: pointer;
-    background: transparent;
-    border-color: transparent;
-    border-width: 39px 0;
-    color: transparent;
-}
-
-input[type=range]::-ms-fill-lower {
-    background: #e5e4e3;
-    border: 0px solid #000101;
-    border-radius: 50px;
-    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-}
-
-input[type=range]::-ms-fill-upper {
-    background: #e5e4e3;
-    border: 0px solid #000101;
-    border-radius: 50px;
-    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-}
-
-input[type=range]::-ms-thumb {
-    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-    border: 0px solid #000000;
-    height: 20px;
-    width: 20px;
-    border-radius: 25px;
-    background: blue;
-    cursor: pointer;
-}
-
-input[type=range]:focus::-ms-fill-lower {
-    background: #e5e4e3;
-}
-
-input[type=range]:focus::-ms-fill-upper {
-    background: #e5e4e3;
-}
-
-:root {
-    scrollbar-width: thin;
-    scrollbar-color: none #333;
-}
-
-::-webkit-scrollbar {
-    width: 7px;
-}
-
-::-webkit-scrollbar-track {
-    background-color: none;
-}
-
-::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background-color: rgb(156, 156, 156);
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background-color: rgb(145, 145, 145);
-}
-
-::-webkit-scrollbar-thumb:active {
-    background-color: rgb(116, 116, 116);
 }

@@ -1,8 +1,11 @@
-var canvas = document.getElementById('canvas')
-var ctx = canvas.getContext('2d')
-var range = document.getElementById('range')
-var rangeInput = document.getElementById('range-input')
-var rangeForm = document.getElementById('range-form')
+document.body.addEventListener('dragstart', event => event.preventDefault())
+
+const canvas = document.getElementById('canvas')
+const ctx = canvas.getContext('2d')
+const range = document.getElementById('range')
+const rangeInput = document.getElementById('range-input')
+const rangeForm = document.getElementById('range-form')
+const copy = document.getElementById('copy')
 
 canvas.width = 512
 canvas.height = 512
@@ -10,89 +13,58 @@ canvas.height = 512
 range.max = canvas.width
 range.value = canvas.width / 2
 
-rangeInput.value = range.value
+rangeInput.value = canvas.width / 2
 
 ctx.fillStyle = '#333333'
 ctx.fillRect(0, 0, canvas.width, canvas.height)
-ctx.font = canvas.width / 2 + 'px CookieRun Black'
+ctx.font = `${canvas.width / 2}px CookieRun Black`
 ctx.textBaseline = 'middle'
-ctx.textAlign = "center"
+ctx.textAlign = 'center'
 
-range.addEventListener('change', function(event) {
-    var size = event.target.value
-
-    ctx.font = size + 'px CookieRun Black'
-    rangeInput.value = size
+range.addEventListener('change', ({ target: { value } }) => {
+    ctx.font = `${value}px CookieRun Black`
+    rangeInput.value = value
 })
 
-range.addEventListener('input', function(event) {
-    var size = event.target.value
-
-    ctx.font = size + 'px CookieRun Black'
-    rangeInput.value = size
+range.addEventListener('input', ({ target: { value } }) => {
+    ctx.font = `${value}px CookieRun Black`
+    rangeInput.value = value
 })
 
-document.getElementById('save').addEventListener('click', function() {
+document.getElementById('save').addEventListener('click', () => {
     if (!confirm('저장하실 건가요?')) return
 
-    if (window.navigator.msSaveBlob) {
-        canvas.toBlob(function(blob) {
-            window.navigator.msSaveBlob(blob, 'image.png')
-        })
-    } else {
-        var link = document.createElement('a')
-        link.href = canvas.toDataURL()
-        link.download = "image.png"
-        link.click()
-    }
+    const link = document.createElement('a')
+    link.href = canvas.toDataURL()
+    link.download = 'image.png'
+    link.click()
 })
 
-document.getElementById('form').addEventListener('submit', function(event) {
+document.getElementById('form').addEventListener('submit', event => {
     event.preventDefault()
 
-    var value = document.getElementById('name').value
+    const value = document.getElementById('name').value
 
     if (!value) return
 
     ctx.fillStyle = '#333333'
     ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-    ctx.fillStyle = "white"
-    ctx.strokeStyle = "white"
+    ctx.fillStyle = 'white'
+    ctx.strokeStyle = 'white'
 
     ctx.strokeText(value, canvas.width / 2, canvas.height / 2)
     ctx.fillText(value, canvas.width / 2, canvas.height / 2)
 })
 
-rangeForm.addEventListener('submit', function(event) {
+rangeForm.addEventListener('submit', event => {
     event.preventDefault()
 
-    var size = rangeInput.value
+    if (isNaN(rangeInput.value) || rangeInput.value > canvas.width || rangeInput.value < 5) return rangeInput.value = range.value
 
-    if (isNaN(size) || size > canvas.width || size < 5) return rangeInput.value = range.value
-
-    ctx.font = size + 'px CookieRun Black'
-    range.value = size
+    ctx.font = `${rangeInput.value}px CookieRun Black`
+    range.value = rangeInput.value
 })
 
-rangeInput.addEventListener('keydown', function(event) {
-    if (!/^\d+|Backspace|Enter|ArrowLeft|ArrowRight|ArrowUp|ArrowDown$/.test(event.key) || event.target.value.length > canvas.width.length) event.preventDefault()
-})
-
-if (window.navigator.clipboard && window.navigator.clipboard.write && ClipboardItem) {
-    document.getElementById('copy').addEventListener('click', function() {
-        canvas.toBlob(function(blob) {
-            window.navigator.clipboard.write([ new ClipboardItem({ 'image/png': blob }) ])
-        })
-    })
-} else {
-    if (!Element.prototype.remove) {
-        Element.prototype.remove = function () {
-            if (this.parentNode) {
-                this.parentNode.removeChild(this)
-            }
-        }
-    }
-
-    document.getElementById('copy').remove() 
-}
+if (window.navigator.clipboard && window.navigator.clipboard.write && ClipboardItem) copy.addEventListener('click', () => canvas.toBlob(blob => navigator.clipboard.write([ new ClipboardItem({ [blob.type]: blob }) ])))
+else copy.remove() 
