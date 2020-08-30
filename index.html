@@ -5,19 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>프사 만들기</title>
+    <meta name="keywords" content="프사 만들기">
     <meta name="description" content="프사를 만들어 보세요!">
     <meta name="og:type" content="website">
     <meta name="og:site_name" content="profile.ditto7890.xyz">
     <meta name="og:title" content="프사 만들기">
-    <meta name="og:description" content="프사를 만들어 보세요!">
-    <meta name="og:image" content="https://profile.ditto7890.xyz/img/favicon.ico">
+    <meta property="og:description" content="프사를 만들어 보세요!">
+    <meta property="og:image" content="https://profile.ditto7890.xyz/img/favicon.ico">
+    <meta property="og:image:type" content="image/x-icon">
     <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/button.css">
-    <link rel="stylesheet" href="css/range.css">
-    <link rel="stylesheet" href="css/text.css">
-    <link rel="stylesheet" href="css/number.css">
-    <link rel="stylesheet" href="css/scrollbar.css">
     <link rel="icon shortcut" href="img/favicon.ico" type="image/x-icon">
     <script src="js/index.js" defer></script>
 </head>
@@ -25,7 +21,7 @@
 <body>
     <div id="main">
         <canvas id="canvas"></canvas>
-        <div id="ranges">
+        <div id="range-container">
             <input type="range" id="range" min="5" max="512" value="256" step="1">
             <form id="range-form">
                 <span>
@@ -37,6 +33,14 @@
             <input type="text" id="name" spellcheck="false" autocomplete="off">
             <button>적용</button>
         </form>
+        <div id="filename-extension">
+            <label for="image-type">확장자&nbsp;</label>
+            <select id="image-type">
+                <option value="png" selected>png</option>
+                <option value="jpeg">jpeg</option>
+                <option value="webp">webp</option>
+            </select>
+        </div>
         <div id="buttons">
             <button id="save">저장</button>
             <button id="copy">복사</button>

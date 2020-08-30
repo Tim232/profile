@@ -6,6 +6,7 @@ const range = document.getElementById('range')
 const rangeInput = document.getElementById('range-input')
 const rangeForm = document.getElementById('range-form')
 const copy = document.getElementById('copy')
+const imageType = document.getElementById('image-type')
 
 canvas.width = 512
 canvas.height = 512
@@ -35,9 +36,14 @@ document.getElementById('save').addEventListener('click', () => {
     if (!confirm('저장하실 건가요?')) return
 
     const link = document.createElement('a')
-    link.href = canvas.toDataURL()
-    link.download = 'image.png'
+    link.href = canvas.toDataURL(`image/${imageType.value}`)
+    link.download = `image.${imageType.value}`
     link.click()
+})
+
+imageType.addEventListener('change', ({ target: { value } }) => {
+    if (value === 'png') copy.style.display = 'inline'
+    else copy.style.display = 'none'
 })
 
 document.getElementById('form').addEventListener('submit', event => {
@@ -66,5 +72,5 @@ rangeForm.addEventListener('submit', event => {
     range.value = rangeInput.value
 })
 
-if (window.navigator.clipboard && window.navigator.clipboard.write && ClipboardItem) copy.addEventListener('click', () => canvas.toBlob(blob => navigator.clipboard.write([ new ClipboardItem({ [blob.type]: blob }) ])))
-else copy.remove() 
+if (window.navigator.clipboard && window.navigator.clipboard.write && window.ClipboardItem) copy.addEventListener('click', () => canvas.toBlob(blob => navigator.clipboard.write([ new ClipboardItem({ [blob.type]: blob }) ]).then(null, err => console.error(err)), `image/${imageType.value}`))
+else copy.remove()

@@ -1,3 +1,6 @@
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
 @font-face {
     font-family: 'CookieRun Black';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/CookieRunOTF-Black00.woff') format('woff');
@@ -5,15 +8,16 @@
     font-style: normal;
 }
 
-@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
-
 body {
-    font-family: 'Spoqa Han Sans', sans-serif;
+    font-family: 'Spoqa Han Sans', 'Noto Sans KR', sans-serif;
     margin: 0;
     padding: 0;
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
+    -ms-user-select: none;
+    background: #36393f;
+    color: white;
 }
 
 #main {
@@ -26,16 +30,16 @@ body {
 }
 
 #canvas {
-    font-family: 'CookieRun Black';
+    font-family: 'CookieRun Black', sans-serif;
     background-color: white;
 }
 
-#ranges {
+#range-container, #filename-extension {
     margin: 10px 0;
 }
 
-#buttons {
-    margin-top: 10px;
+#buttons button {
+    margin: 0 2.5px;
 }
 
 #range {
@@ -44,5 +48,246 @@ body {
 }
 
 #range-form {
-    font-size: 1.3rem;
+    font-size: 18px;
+}
+
+#form * {
+    margin: 0 2.5px;
+}
+
+select {
+    border: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
+    -o-box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
+    border-radius: 3px;
+    background-color: var(--input-dark-bg);
+    color: var(--normal);
+    margin: 0;
+    font-size: inherit;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    cursor: pointer;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    -webkit-padding-start: 2px;
+    -webkit-padding-end: 20px;
+    -moz-padding-start: 2px;
+    -moz-padding-end: 20px;
+}
+
+select:focus {
+    outline: none;
+}
+
+input[type=text] {
+    background: var(--input-dark-bg);
+    border: 1px solid var(--input-dark-border);
+    color: var(--normal);
+    height: 30px;
+    border-radius: 3px;
+    padding: 10px;
+    font-size: 16px;
+    outline: none;
+    font-family: 'Noto Sans KR', sans-serif;
+    transition: border-color .2s ease-in-out;
+    -webkit-transition: border-color .2s ease-in-out;
+    -moz-transition: border-color .2s ease-in-out;
+    -o-transition: border-color .2s ease-in-out;
+}
+
+input[type=text]:focus {
+    border: 1px solid var(--purple);
+    outline: none;
+}
+
+input[type=number] {
+    border: 0;
+    outline: none;
+    width: 2em;
+    padding: 0.5vh;
+    background-color: transparent;
+    color: white;
+    font-size: 1.2rem;
+    -moz-appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none; 
+    margin: 0; 
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    margin-bottom: 10px;
+    background-color: transparent;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 7.5px;
+    cursor: pointer;
+    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+    -webkit-box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+    background: #d5d4d3;
+    border-radius: 25px;
+    border: 0px solid #000101;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+    -webkit-box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+    border: 0px solid #000000;
+    height: 20px;
+    width: 20px;
+    border-radius: 25px;
+    background: var(--purple);
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -6px;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #e5e4e3;
+}
+
+input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 7.5px;
+    cursor: pointer;
+    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+    -moz-box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+    background: #d5d4d3;
+    border-radius: 25px;
+    border: 0px solid #000101;
+}
+
+input[type=range]::-moz-range-thumb {
+    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+    -moz-box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+    border: 0px solid #000000;
+    height: 20px;
+    width: 20px;
+    border-radius: 25px;
+    background: var(--purple);
+    cursor: pointer;
+}
+
+input[type=range]::-ms-track {
+    width: 100%;
+    height: 7.5px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    border-width: 39px 0;
+    color: transparent;
+}
+
+input[type=range]::-ms-fill-lower {
+    background: #e5e4e3;
+    border: 0px solid #000101;
+    border-radius: 50px;
+    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+}
+
+input[type=range]::-ms-fill-upper {
+    background: #e5e4e3;
+    border: 0px solid #000101;
+    border-radius: 50px;
+    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+}
+
+input[type=range]::-ms-thumb {
+    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+    border: 0px solid #000000;
+    height: 20px;
+    width: 20px;
+    border-radius: 25px;
+    background: var(--purple);
+    cursor: pointer;
+}
+
+input[type=range]:focus::-ms-fill-lower {
+    background: #e5e4e3;
+}
+
+input[type=range]:focus::-ms-fill-upper {
+    background: #e5e4e3;
+}
+
+button {
+    font-family: Whitney,Helvetica Neue,Helvetica,Arial,sans-serif;
+    border: none;
+    border-radius: 3px;
+    padding: 2px 16px;
+    font-size: 14px;
+    outline: none;
+    cursor: pointer;
+    background-color: var(--purple);
+    color: white;
+    min-height: 38px;
+    min-width: 60px;
+}
+
+button:hover {
+    background-color: var(--hovered-purple);
+}
+
+button:focus {
+    box-shadow: 0 0 0 .17rem rgba(114, 137, 218, .25);
+    -webkit-box-shadow: 0 0 0 .17rem rgba(114, 137, 218, .25);
+    -moz-box-shadow: 0 0 0 .17rem rgba(114, 137, 218, .25);
+    -o-box-shadow: 0 0 0 .17rem rgba(114, 137, 218, .25);
+}
+
+:root {
+    --scrollbar-auto-scrollbar-color-thumb: #202225;
+    --scrollbar-auto-scrollbar-color-track: #2f3136;
+    --scrollbar-auto-thumb: #202225;
+    --scrollbar-auto-track: #2e3338;
+
+    --normal: #dcddde;
+    --purple: #7289da;
+    --hovered-purple: #677bc4;
+
+    --input-dark-bg: #303339;
+    --input-dark-border: #222428;
+}
+
+html {
+    scrollbar-color: var(--scrollbar-auto-scrollbar-color-thumb) var(--scrollbar-auto-scrollbar-color-track);
+    scrollbar-width: auto;
+}
+
+::-webkit-scrollbar {
+    width: 16px;
+    height: 16px;
+}
+
+::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-auto-thumb);
+    min-height: 40px;
+}
+
+::-webkit-scrollbar-thumb, ::-webkit-scrollbar-track {
+    border: 4px solid transparent;
+    background-clip: padding-box;
+    border-radius: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--scrollbar-auto-track);
 }
