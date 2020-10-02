@@ -1,5 +1,3 @@
-document.body.addEventListener('dragstart', event => event.preventDefault())
-
 const canvas = document.getElementById('canvas')
 const ctx = canvas.getContext('2d')
 const range = document.getElementById('range')
@@ -18,17 +16,17 @@ rangeInput.value = canvas.width / 2
 
 ctx.fillStyle = '#333333'
 ctx.fillRect(0, 0, canvas.width, canvas.height)
-ctx.font = `${canvas.width / 2}px CookieRun Black`
+ctx.font = `${canvas.width / 2}px "CookieRun Black", sans-serif`
 ctx.textBaseline = 'middle'
 ctx.textAlign = 'center'
 
 range.addEventListener('change', ({ target: { value } }) => {
-    ctx.font = `${value}px CookieRun Black`
+    ctx.font = `${value}px "CookieRun Black", sans-serif`
     rangeInput.value = value
 })
 
 range.addEventListener('input', ({ target: { value } }) => {
-    ctx.font = `${value}px CookieRun Black`
+    ctx.font = `${value}px "CookieRun Black", sans-serif`
     rangeInput.value = value
 })
 
@@ -41,15 +39,12 @@ document.getElementById('save').addEventListener('click', () => {
     link.click()
 })
 
-imageType.addEventListener('change', ({ target: { value } }) => {
-    if (value === 'png') copy.style.display = 'inline'
-    else copy.style.display = 'none'
-})
+imageType.addEventListener('change', ({ target: { value } }) => copy.style.display = value === 'png' ? 'inline' : 'none')
 
 document.getElementById('form').addEventListener('submit', event => {
     event.preventDefault()
 
-    const value = document.getElementById('name').value
+    const { value } = document.getElementById('name')
 
     if (!value) return
 
@@ -63,12 +58,14 @@ document.getElementById('form').addEventListener('submit', event => {
     ctx.fillText(value, canvas.width / 2, canvas.height / 2)
 })
 
+document.body.addEventListener('dragstart', event => event.preventDefault())
+
 rangeForm.addEventListener('submit', event => {
     event.preventDefault()
 
     if (isNaN(rangeInput.value) || rangeInput.value > canvas.width || rangeInput.value < 5) return rangeInput.value = range.value
 
-    ctx.font = `${rangeInput.value}px CookieRun Black`
+    ctx.font = `${rangeInput.value}px "CookieRun Black", sans-serif`
     range.value = rangeInput.value
 })
 

@@ -9,7 +9,7 @@
 }
 
 body {
-    font-family: 'Spoqa Han Sans', 'Noto Sans KR', sans-serif;
+    font-family: 'Spoqa Han Sans', 'Noto Sans KR', Arial, sans-serif;
     margin: 0;
     padding: 0;
     user-select: none;
@@ -40,7 +40,7 @@ body, input[type=text], input[type=number], select {
     margin: 10px 0;
 }
 
-#buttons button {
+#buttons button, #form * {
     margin: 0 2.5px;
 }
 
@@ -53,10 +53,6 @@ body, input[type=text], input[type=number], select {
     font-size: 18px;
 }
 
-#form * {
-    margin: 0 2.5px;
-}
-
 select {
     border: none;
     box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
@@ -64,7 +60,7 @@ select {
     -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
     -o-box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
     border-radius: 3px;
-    background-color: var(--deprecated-text-input-bg);
+    background-color: var(--background-secondary);
     margin: 0;
     font-size: inherit;
     padding-top: 2px;
@@ -72,7 +68,6 @@ select {
     cursor: pointer;
     text-overflow: ellipsis;
     white-space: nowrap;
-    -webkit-appearance: button;
     -moz-appearance: button;
     -webkit-padding-start: 2px;
     -webkit-padding-end: 20px;
@@ -80,13 +75,14 @@ select {
     -moz-padding-end: 20px;
 }
 
-select:focus {
+select, select:focus {
     outline: none;
 }
 
 input[type=text] {
     background-color: var(--deprecated-text-input-bg);
     border: 1px solid var(--deprecated-text-input-border);
+    width: calc(10rem + 17.5%);
     height: 30px;
     border-radius: 3px;
     padding: 10px;
@@ -104,7 +100,7 @@ input[type=text]:focus {
 }
 
 input[type=number] {
-    border: 0;
+    border: none;
     outline: none;
     width: 2em;
     padding: 0.5vh;
@@ -238,13 +234,6 @@ button {
 
 button:hover {
     background-color: var(--hovered-purple);
-}
-
-button:focus {
-    box-shadow: 0 0 0 .17rem rgba(114, 137, 218, .25);
-    -webkit-box-shadow: 0 0 0 .17rem rgba(114, 137, 218, .25);
-    -moz-box-shadow: 0 0 0 .17rem rgba(114, 137, 218, .25);
-    -o-box-shadow: 0 0 0 .17rem rgba(114, 137, 218, .25);
 }
 
 html {

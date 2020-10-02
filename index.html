@@ -4,18 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>프사 만들기</title>
-    <meta name="keywords" content="프사 만들기">
-    <meta name="description" content="프사를 만들어 보세요!">
-    <meta name="og:type" content="website">
-    <meta name="og:site_name" content="profile.ditto7890.xyz">
-    <meta name="og:title" content="프사 만들기">
-    <meta property="og:description" content="프사를 만들어 보세요!">
-    <meta property="og:image" content="https://profile.ditto7890.xyz/img/favicon.ico">
-    <meta property="og:image:type" content="image/x-icon">
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="icon shortcut" href="img/favicon.ico" type="image/x-icon">
-    <script src="js/index.js" defer></script>
+    <title>프로필 사진 만들기</title>
+    <meta name="keywords" content="프로필 사진 만들기">
+    <meta name="description" content="웹에서 온라인으로 프로필 사진을 만들어 보세요!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://profile.ditto7890.xyz/">
+    <meta property="og:site_name" content="profile.ditto7890.xyz">
+    <meta property="og:title" content="프로필 사진 만들기">
+    <meta property="og:description" content="웹에서 온라인으로 프로필 사진을 만들어 보세요!">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://profile.ditto7890.xyz/favicon.png">
+    <meta property="og:image:width" content="512">
+    <meta property="og:image:height" content="512">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:locale" content="ko_KR">
+    <meta property="og:locale:alternate" content="ko_KR">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="프로필 사진 만들기">
+    <meta name="twitter:description" content="웹에서 온라인으로 프로필 사진을 만들어 보세요!">
+    <meta name="twitter:image" content="https://profile.ditto7890.xyz/favicon.png">
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon shortcut" href="favicon.png" type="image/png">
+    <script src="index.js" defer></script>
 </head>
 
 <body>
@@ -24,9 +34,7 @@
         <div id="range-container">
             <input type="range" id="range" min="5" max="512" value="256" step="1">
             <form id="range-form">
-                <span>
-                    <input type="number" id="range-input">px
-                </span>
+                <span><input type="number" id="range-input">px</span>
             </form>
         </div>
         <form id="form">
@@ -35,7 +43,7 @@
         </form>
         <div id="filename-extension">
             <label for="image-type">확장자&nbsp;</label>
-            <select id="image-type">
+            <select id="image-type" autocomplete="off">
                 <option value="png" selected>png</option>
                 <option value="jpeg">jpeg</option>
                 <option value="webp">webp</option>
