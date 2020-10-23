@@ -265,6 +265,11 @@ html {
     background-color: var(--scrollbar-auto-track);
 }
 
+:root {
+    --purple: #7289da;
+    --hovered-purple: #677bc4;
+}
+
 @media (prefers-color-scheme: light) {
     :root {
         --header-primary: #060607;
@@ -320,8 +325,6 @@ html {
         --deprecated-text-input-border-hover: #b9bbbe;
         --deprecated-text-input-border-disabled: #dcddde;
         --deprecated-text-input-prefix: #b9bbbe;
-        --purple: #7289da;
-        --hovered-purple: #677bc4;
     }
 }
 
@@ -380,7 +383,5 @@ html {
         --deprecated-text-input-border-hover: #040405;
         --deprecated-text-input-border-disabled: #202225;
         --deprecated-text-input-prefix: #dcddde;
-        --purple: #7289da;
-        --hovered-purple: #677bc4;
     }
 }
