@@ -53,6 +53,49 @@ body, input[type=text], input[type=number], select {
     font-size: 18px;
 }
 
+#announce {
+    background-color: var(--background-secondary);
+    padding: 12px;
+    font-weight: 600;
+    border-radius: 4px;
+    width: 19rem;
+    margin-bottom: 10px;
+}
+
+#announce-close {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    opacity: 0.4;
+}
+
+#announce-close:hover {
+    opacity: 1;
+}
+
+#announce-close:before, #announce-close:after {
+    position: absolute;
+    left: 24px;
+    content: ' ';
+    height: 24px;
+    width: 2.5px;
+    cursor: pointer;
+    background-color: var(--text-normal);
+}
+
+#announce-close:before {
+    transform: rotate(45deg);
+}
+
+#announce-close:after {
+    transform: rotate(-45deg);
+}
+
+#announce a {
+    text-decoration: none;
+    color: var(--interactive-normal);
+}
+
 select {
     border: none;
     box-shadow: 0 1px 3px rgba(0, 0, 0, .1);

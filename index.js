@@ -71,3 +71,14 @@ rangeForm.addEventListener('submit', event => {
 
 if (window.navigator.clipboard && window.navigator.clipboard.write && window.ClipboardItem) copy.addEventListener('click', () => canvas.toBlob(blob => navigator.clipboard.write([ new ClipboardItem({ [blob.type]: blob }) ]).then(null, err => console.error(err)), `image/${imageType.value}`))
 else copy.remove()
+
+const announce = JSON.parse(localStorage.getItem('announce') || true)
+const announceElement = document.getElementById('announce')
+const announceClose = document.getElementById('announce-close')
+
+if (!announce) announceElement.remove()
+
+announceClose.addEventListener('click', () => {
+    announceElement.remove()
+    localStorage.setItem('announce', false)
+})
